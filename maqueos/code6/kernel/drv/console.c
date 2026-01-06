@@ -32,6 +32,17 @@ char keys_map[] = {
 	0, 0, '\'', 0, '[', '=', 0, 0, 0, 0, 13, ']', 0, '\\', 0, 0,
 	0, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, '`', 0};
 
+
+// 系统调用实现
+void sys_drewPlane()
+{
+    printk("\n");
+    printk("  *\n");
+    printk("*****\n");
+    printk("  *\n");
+    printk(" * *\n");
+}
+
 void write_char(char ascii, int xx, int yy)
 {
 	char *font_byte;

@@ -3,6 +3,7 @@
 #define NR_output 2
 #define NR_exit 3
 #define NR_pause 4
+#define NR_drew_plane 5
 
 .macro syscall0 A7
 	ori $a7, $r0, \A7
@@ -25,12 +26,19 @@ proc2:
 	syscall1_a NR_output, str
 read:
 	syscall1_a NR_input, char
-	syscall1_a NR_output, char
 	la $t0, char
 	ld.b $t0, $t0, 0
+
+	ori $t1, $r0, 112
+	beq $t0, $t1, drew_plane
+
+	syscall1_a NR_output, char
 	ori $t1, $r0, 13
 	bne $t0, $t1, read
 	syscall0 NR_exit
+drew_plane:
+	syscall0 NR_drew_plane
+	b read
 proc1_pause:
 	syscall0 NR_pause
 	b proc1

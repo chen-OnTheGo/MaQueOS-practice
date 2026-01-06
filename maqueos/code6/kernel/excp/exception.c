@@ -29,7 +29,7 @@
 
 extern struct process *current;
 int (*syscalls[])() = {
-	sys_fork, sys_input, sys_output, sys_exit, sys_pause};
+	sys_fork, sys_input, sys_output, sys_exit, sys_pause, sys_drewPlane};
 
 void timer_interrupt()
 {
