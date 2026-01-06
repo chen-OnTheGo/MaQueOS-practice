@@ -17,7 +17,8 @@ struct queue
 	struct process *wait;
 	char *buffer;
 };
-
+// 飞机颜色
+unsigned char color[3];
 extern char fonts[];
 int x, y;
 struct queue read_queue;
@@ -32,10 +33,48 @@ char keys_map[] = {
 	0, 0, '\'', 0, '[', '=', 0, 0, 0, 0, 13, ']', 0, '\\', 0, 0,
 	0, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, '`', 0};
 
+int sys_drewGplane()
+{
+		color[0] = 0;
+		color[1] = 255;
+		color[2] = 0;
+		printk("\n");
+    printk("  *\n");
+    printk("*****\n");
+    printk("  *\n");
+    printk(" * *\n");
+}
+
+int sys_drewBplane()
+{
+		color[0] = 255;
+		color[1] = 0;
+		color[2] = 0;
+		printk("\n");
+    printk("  *\n");
+    printk("*****\n");
+    printk("  *\n");
+    printk(" * *\n");
+}
+
+int sys_drewYplane()
+{
+		color[0] = 0;
+		color[1] = 255;
+		color[2] = 255;
+		printk("\n");
+    printk("  *\n");
+    printk("*****\n");
+    printk("  *\n");
+    printk(" * *\n");
+}
 
 // 系统调用实现
 void sys_drewPlane()
 {
+		color[0] = 0;
+		color[1] = 0;
+		color[2] = 255;
     printk("\n");
     printk("  *\n");
     printk("*****\n");
@@ -57,9 +96,9 @@ void write_char(char ascii, int xx, int yy)
 		{
 			if (*font_byte & (1 << (7 - col)))
 			{
-				*pos++ = 0;
-				*pos++ = 0;
-				*pos++ = 255;
+				*pos++ = color[0];
+				*pos++ = color[1];
+				*pos++ = color[2];
 				*pos++ = 0;
 			}
 			else

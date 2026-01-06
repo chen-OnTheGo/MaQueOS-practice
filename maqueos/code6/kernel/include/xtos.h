@@ -26,6 +26,10 @@ struct process
 	struct context context;
 };
 
+int sys_drewPlane();
+int sys_drewGplane();
+int sys_drewBplane();
+int sys_drewYplane();
 void printk(char *);
 void con_init();
 void panic(char *);
