@@ -1,0 +1,5 @@
+# cross compiler / toolchain
+maqueos/cross-tool/
+
+# large binaries
+*.gdb
